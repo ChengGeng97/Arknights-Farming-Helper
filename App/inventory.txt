@@ -1,0 +1,35 @@
+4x D32 Steel
+8x Polymerization Preparation
+5x Loxic Kohl
+2x Manganese Trihydrate
+50x Manganese Ore
+13x Grindstone Pentahydrate
+15x Grindstone
+9x RMA70-24
+46x RMA70-12
+10x Orirock Concentration
+70x Orirock Cluster
+1x Orirock
+58x Device
+13x Damaged Device
+17x Polyester Lump
+7x Polyester Pack
+32x Polyester
+174x Ester
+5x Sugar Lump
+14x Sugar Pack
+36x Sugar
+2x Sugar Substitute
+11x Oriron Block
+29x Oriron Cluster
+62x Oriron
+20x Oriron Shard
+71x Aketon
+54x Polyketon
+31x Diketon
+13x Polymerized Gel
+38x Coagulating Gel
+7x Incandescent Alloy Block
+75x Incandescent Alloy
+5x Crystalline Electronic Unit
+14x Crystalline Component

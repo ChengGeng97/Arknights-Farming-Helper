@@ -1,0 +1,117 @@
+Crystalline Electronic Unit
+1x Crystalline Circuit
+2x Polymerized Gel
+1x Incandescent Alloy Block
+
+D32 Steel
+1x Manganese Trihydrate
+1x Grindstone Pentahydrate
+1x RMA70-24
+
+Bipolar Nanoflake
+1x Optimized Device
+2x White Horse Kohl
+
+Polymerization Preparation
+1x Orirock Concentration
+1x Oriron Block
+1x Keton Colloid
+
+Crystalline Circuit
+2x Crystalline Component
+1x Coagulating Gel
+1x Incandescent Alloy
+
+Incandescent Alloy Block
+1x Integrated Device
+1x Grindstone
+1x Incandescent Alloy
+
+Polymerized Gel
+1x Oriron Cluster
+1x Coagulating Gel
+1x Incandescent Alloy
+
+RMA70-24
+1x RMA70-12
+2x Orirock Cluster
+1x Aketon
+
+Grindstone Pentahydrate
+1x Grindstone
+1x Oriron Cluster
+1x Integrated Device
+
+Manganese Trihydrate
+2x Manganese Ore
+1x Polyester Pack
+1x Loxic Kohl
+
+White Horse Kohl
+1x Loxic Kohl
+1x Sugar Pack
+1x RMA70-12
+
+Optimized Device
+1x Integrated Device
+2x Orirock Cluster
+1x Grindstone
+
+Integrated Device
+4x Device
+
+Device
+3x Damaged Device
+
+Keton Colloid
+2x Aketon
+1x Sugar Pack
+1x Manganese Ore
+
+Aketon
+4x Polyketon
+
+Polyketon
+3x Diketon
+
+Oriron Block
+2x Oriron Cluster
+1x Integrated Device
+1x Polyester Pack
+
+Oriron Cluster
+4x Oriron
+
+Oriron
+3x Oriron Shard
+
+Polyester Lump
+2x Polyester Pack
+1x Aketon
+1x Loxic Kohl
+
+Polyester Pack
+4x Polyester
+
+Polyester
+3x Ester
+
+Sugar Lump
+2x Sugar Pack
+1x Oriron Cluster
+1x Manganese Ore
+
+Sugar Pack
+4x Sugar
+
+Sugar
+3x Sugar Substitute
+
+Orirock Concentration
+4x Orirock Cluster
+
+Orirock Cluster
+5x Orirock Cube
+
+Orirock Cube
+3x Orirock
