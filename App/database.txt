@@ -52,6 +52,16 @@ White Horse Kohl
 1x Sugar Pack
 1x RMA70-12
 
+Refined Solvent
+1x Seminatural Solvent
+1x Compound Cutting Fluid
+1x Coagulating Gel
+
+Cutting Stock Solution
+1x Compound Cutting Fluid
+1x Crystalline Component
+1x RMA70-12
+
 Optimized Device
 1x Integrated Device
 2x Orirock Cluster

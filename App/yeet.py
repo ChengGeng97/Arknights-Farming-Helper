@@ -9,18 +9,16 @@ import re     # for parsing the files
 
 databaseFile = open("database.txt", "r")
 inventoryFile = open("inventory.txt", "r")
+tier3MatsFile = open("tier3mats.txt", "r")
 
 databaseLines = databaseFile.read().split('\n')
 inventoryLines = inventoryFile.read().split('\n')
-
+tier3MatsLines = tier3MatsFile.read().split('\n') 
 
 targetTier = 3
 
 goalPath = os.getcwd() + '\goals'
 goalDirectory = os.scandir(goalPath)
-
-#pain = open("goals")
-#print(pain)
 
 
 # Information about the world
@@ -30,7 +28,7 @@ itemToConstituents = {}          # key: name of an item, value: a list of tuples
 
 itemToTier = {}                  # key: name of an item, value: an integer representing the tier of the item
 tierToItem = {}                  # key: an integer representing a tier, value: a list of item names in that tier 
-
+tierToItem[targetTier] = []
 
 # Information about the inventory
 itemNameToNumberOwned = {}       # key: name of an item, value: an integer, representing the number of instances in the inventory
@@ -56,7 +54,7 @@ def initItem(itemName):
 
 """
 1. Generate a graph where each item points to its constituents.
-    Also maintain a table where each item is mapped to the number of each constituent.
+    Also maintain a table where each item is mapped to the number of each constituent. 
 """
 
 # init regex
@@ -95,67 +93,59 @@ for databaseLine in databaseLines:
     initItem(currentItem)
 
 """
-2. Find the mapping from each item to its tier.
+2. Establish which materials are Tier-3 (the target tier) 
+    Find the mapping from each item to its tier.
     The tier of each item is the max depth of the subtree rooted at the item.
 """
 
-#### STEPS 2 AND 3 NEED TO BE RE-WRITTEN WHEN STORMWATCH IS RELEASED!!!!!!!!!!!!! ####
+def searchMatTier(materialName, tierNumber, matsDiscovered, minTier, maxTier):
+    if materialName in matsDiscovered:
+        return (minTier, maxTier)
 
-itemNamesToNumberOfOutgoingEdges = {}
-leaves = queue.Queue()
+    matsDiscovered.add(materialName)
+    itemToTier[materialName] = tierNumber
 
-for itemName in itemDependencyGraph.keys():
-    itemNamesToNumberOfOutgoingEdges[itemName] = len(itemDependencyGraph[itemName])
+    minTier = min(tierNumber, minTier)
+    maxTier = max(tierNumber, maxTier)
 
-for itemName in itemNamesToNumberOfOutgoingEdges.keys():
-    if itemNamesToNumberOfOutgoingEdges[itemName] == 0:
-        leaves.put(itemName)
+    for subItem in itemDependencyGraph[materialName]:
+        (minTier, maxTier) = searchMatTier(subItem, tierNumber - 1, matsDiscovered, minTier, maxTier)
 
-while leaves.qsize() != 0:
-    itemName = leaves.get()
-    
-    # Discover the tier of the item
-    itemTier = 1
-    for subitem in itemDependencyGraph[itemName]:
-        itemTier = max(itemTier, itemToTier[subitem] + 1)
+    for superItem in reverseItemDependencyGraph[materialName]:
+        (minTier, maxTier) = searchMatTier(superItem, tierNumber + 1, matsDiscovered, minTier, maxTier)
 
-    itemToTier[itemName] = itemTier
-
-    for superItem in reverseItemDependencyGraph[itemName]:
-        itemNamesToNumberOfOutgoingEdges[superItem] = itemNamesToNumberOfOutgoingEdges[superItem] - 1
-        
-        if itemNamesToNumberOfOutgoingEdges[superItem] == 0:
-            leaves.put(superItem)
+    return (minTier, maxTier)
 
 
-maxTier = 0
-for itemName in itemToTier.keys():
-    actualTier = itemToTier[itemName]
+for tier3MatsLine in tier3MatsLines:
+    strippedLine = tier3MatsLine.strip()
 
-    for superItem in reverseItemDependencyGraph[itemName]:
-        actualTier = max(actualTier, itemToTier[superItem] - 1)
+    # Ignore empty lines
+    if len(strippedLine) == 0:
+        continue
 
-    itemToTier[itemName] = actualTier
-    maxTier = max(maxTier, actualTier)
+    tier3MatName = strippedLine
+
+    # The entire line is a Tier-3 Mat
+    itemToTier[tier3MatName] = targetTier
+    tierToItem[targetTier].append(tier3MatName)
+
+
+for tier3MatName in tierToItem[targetTier]:
+    (minTier, maxTier) = searchMatTier(tier3MatName, targetTier, set(), 99, 0)
+
 
 
 """
 3. Using the mapping generated in 2, find the mapping from each tier to a list of items within that tier.
 """
 
-for x in range(1, maxTier + 1):
+for x in range(minTier, maxTier + 1):
     tierToItem[x] = []
 
 for itemName in itemToTier.keys():
     tier = itemToTier[itemName]
     tierToItem[tier].append(itemName)
-"""
-for x in range(1, maxTier + 1):
-    print(x)
-
-    for item in tierToItem[x]:
-        print(item)
-"""
 
 
 """
@@ -172,8 +162,6 @@ for inventoryLine in inventoryLines:
         itemName = strippedLine[end : len(strippedLine)]
 
         itemNameToNumberOwned[itemName] = instances
-
-# print(itemNameToNumberOwned)
 
 
 """
