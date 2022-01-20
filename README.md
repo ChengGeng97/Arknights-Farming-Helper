@@ -9,7 +9,7 @@ It can be edited to extend the functionality to keep track of your Chips. Just a
 ## How to use it
 1. Edit the `inventory.txt` file to track your current Inventory.
 2. For any operator you are planning to raise, write down the (Tier-3 and above) materials you would need to raise them into a text file and store it in the `goals` folder. Make sure you follow the format of the example file included. Honestly you could have one big `.txt` where you track everyone's materials, but you probably shouldn't.
-3. Run the program (on some command line tool) with `py yeet.py`
+3. Run the program (on some command line tool) with `py runner.py`
 
 ## Misc.
 This thing is now fixed to work with Stormwatch.
